@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Leetcode15Patterns
+﻿namespace Leetcode15Patterns
 {
-    internal class TwoPointers
+    static internal class TwoPointers
     {
+        public static bool HasPairWithSum(int[] arr, int targetSum)
+        {
+            var left = 0;
+            var right = arr.Length - 1;
+            Array.Sort(arr); // Ensure the array is sorted
+
+            while (left < right)
+            {
+                var currentSum = arr[left] + arr[right];
+                if (currentSum == targetSum)
+                {
+                    return true;
+                }
+                if (currentSum < targetSum)
+                {
+                    left++;
+                }
+                else
+                {
+                    right--;
+                }
+            }
+            return false;
+        }
     }
 }
