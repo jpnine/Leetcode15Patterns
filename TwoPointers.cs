@@ -42,5 +42,31 @@
                 }
             }
         }
+
+        public static int[] SquaredSortedArray(int[] arr)
+        {
+            var n = arr.Length;
+            var result = new int[n];
+            var left = 0;
+            var right = n - 1;
+            var highestSquareIndex = n - 1;
+            while (left <= right)
+            {
+                var leftSquare = arr[left] * arr[left];
+                var rightSquare = arr[right] * arr[right];
+                if (leftSquare > rightSquare)
+                {
+                    result[highestSquareIndex] = leftSquare;
+                    left++;
+                }
+                else
+                {
+                    result[highestSquareIndex] = rightSquare;
+                    right--;
+                }
+                highestSquareIndex--;
+            }
+            return result;
+        }
     }
 }
