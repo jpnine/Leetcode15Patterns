@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Leetcode15Patterns
+﻿namespace Leetcode15Patterns
 {
-    static internal class PrefixSum
+    static public class PrefixSum
     {
         /// <summary>
         /// Find the sum of elements between indices a and b (inclusive) in the given array using Prefix Sum technique.

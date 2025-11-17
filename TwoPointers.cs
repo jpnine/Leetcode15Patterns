@@ -1,6 +1,6 @@
 ﻿namespace Leetcode15Patterns
 {
-    static internal class TwoPointers
+    static public class TwoPointers
     {
         public static bool HasPairWithSum(int[] arr, int targetSum)
         {
