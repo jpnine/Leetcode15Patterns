@@ -43,5 +43,16 @@ namespace Leetcode15Patterns
             second.next = second.next.next;
             return dummy.next;
         }
+
+        public void PrintList(ListNode head)
+        {
+            ListNode current = head;
+            while (current != null)
+            {
+                Console.Write(current.val + " -> ");
+                current = current.next;
+            }
+            Console.WriteLine("null");
+        }
     }
 }
