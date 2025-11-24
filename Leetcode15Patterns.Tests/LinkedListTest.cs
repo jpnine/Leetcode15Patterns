@@ -79,5 +79,44 @@
             // Assert
             Assert.True(hasCycle);
         }
+
+        [Fact]
+        public void TestHasNoCycle()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            var head = new LinkedList.ListNode(1,
+                        new LinkedList.ListNode(2,
+                        new LinkedList.ListNode(3)));
+            // Act
+            bool hasCycle = linkedList.HasCycle(head);
+            // Assert
+            Assert.False(hasCycle);
+        }
+
+        [Fact]
+        public void TestMergeTwoLists()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            var l1 = new LinkedList.ListNode(1,
+                        new LinkedList.ListNode(3,
+                        new LinkedList.ListNode(5)));
+            var l2 = new LinkedList.ListNode(2,
+                        new LinkedList.ListNode(4,
+                        new LinkedList.ListNode(6)));
+            // Act
+            var mergedHead = linkedList.MergeTwoLists(l1, l2);
+            // Assert
+            var expectedValues = new List<int> { 1, 2, 3, 4, 5, 6 };
+            var current = mergedHead;
+            foreach (var expectedValue in expectedValues)
+            {
+                Assert.NotNull(current);
+                Assert.Equal(expectedValue, current.val);
+                current = current.next;
+            }
+            Assert.Null(current); // Ensure the list ends correctly
+        }
     }
 }
