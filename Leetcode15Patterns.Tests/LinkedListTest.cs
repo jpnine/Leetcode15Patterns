@@ -185,5 +185,17 @@
             Assert.Equal(1, reversedHead.val);
             Assert.Null(reversedHead.next); // The next should be null
         }
+
+        [Fact]
+        public void TestGetLengthEmptyList()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            LinkedList.ListNode head = null;
+            // Act
+            int length = linkedList.GetLength(head);
+            // Assert
+            Assert.Equal(0, length);
+        }
     }
 }
