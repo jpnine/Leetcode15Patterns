@@ -159,5 +159,31 @@
             }
             Assert.Null(current); // Ensure the list ends correctly
         }
+
+        [Fact]
+        public void TestReverseEmptyList()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            LinkedList.ListNode head = null;
+            // Act
+            var reversedHead = linkedList.ReverseList(head);
+            // Assert
+            Assert.Null(reversedHead); // The reversed list should also be null
+        }
+
+        [Fact]
+        public void TestReverseSingleNodeList()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            var head = new LinkedList.ListNode(1);
+            // Act
+            var reversedHead = linkedList.ReverseList(head);
+            // Assert
+            Assert.NotNull(reversedHead);
+            Assert.Equal(1, reversedHead.val);
+            Assert.Null(reversedHead.next); // The next should be null
+        }
     }
 }
