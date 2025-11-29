@@ -210,5 +210,32 @@
             // Assert
             Assert.Null(newHead); // The list should be empty after deletion
         }
+
+        [Fact]
+        public void TestRemoveElements()
+        {
+            // Arrange
+            var linkedList = new LinkedList();
+            var head = new LinkedList.ListNode(1,
+                        new LinkedList.ListNode(2,
+                        new LinkedList.ListNode(6,
+                        new LinkedList.ListNode(3,
+                        new LinkedList.ListNode(4,
+                        new LinkedList.ListNode(5,
+                        new LinkedList.ListNode(6)))))));
+            int valToRemove = 6;
+            // Act
+            var newHead = linkedList.RemoveElements(head, valToRemove);
+            // Assert
+            var expectedValues = new List<int> { 1, 2, 3, 4, 5 };
+            var current = newHead;
+            foreach (var expectedValue in expectedValues)
+            {
+                Assert.NotNull(current);
+                Assert.Equal(expectedValue, current.val);
+                current = current.next;
+            }
+            Assert.Null(current); // Ensure the list ends correctly
+        }
     }
 }
