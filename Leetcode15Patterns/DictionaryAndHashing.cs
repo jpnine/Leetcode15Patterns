@@ -6,11 +6,13 @@
         {
             var map = new Dictionary<int, int>();
 
-            for (var i = 1; i < nums.Length; i++)
+            for (var i = 0; i < nums.Length; i++)
             {
                 var complement = target - nums[i];
                 if (map.TryGetValue(complement, out int index))
+                {
                     return [index, i];
+                }
                 map[nums[i]] = i;
             }
             return [];
