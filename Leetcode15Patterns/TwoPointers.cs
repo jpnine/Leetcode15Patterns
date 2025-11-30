@@ -1,4 +1,7 @@
-﻿namespace Leetcode15Patterns
+﻿using System.Globalization;
+using System.IO.MemoryMappedFiles;
+
+namespace Leetcode15Patterns
 {
     static public class TwoPointers
     {
@@ -25,6 +28,21 @@
                 }
             }
             return false;
+        }
+
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            var map = new Dictionary<int, int>();
+
+            for (var i = 1;  i < nums.Length; i++ )
+            {
+                var complement = target - nums[i];
+                if (map.TryGetValue(complement, out int index))
+                    return [index, i];
+                map[nums[i]] = i;
+            }
+           return [];
         }
 
         public static void MoveZeroes(int[] nums)
