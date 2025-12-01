@@ -30,6 +30,31 @@ namespace Leetcode15Patterns
             return false;
         }
 
+        // container with most water
+        public static int maxArea(int[] height)
+        {
+            var left = 0;
+            var right = height.Length - 1;
+            var maxArea = 0;
+            while (left < right)
+            {
+                var width = right - left;
+                var currentHeight = Math.Min(height[left], height[right]);
+                var currentArea = width * currentHeight;
+                maxArea = Math.Max(maxArea, currentArea);
+                // Move the pointer pointing to the shorter line
+                if (height[left] < height[right])
+                {
+                    left++;
+                }
+                else
+                {
+                    right--;
+                }
+            }
+            return maxArea;
+        }
+
         public static void MoveZeroes(int[] nums)
         {
             var i = 0;
