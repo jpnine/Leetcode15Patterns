@@ -141,5 +141,35 @@ namespace Leetcode15Patterns
 
             return result;
         }
+
+        //Color Sorting using Dutch National Flag algorithm
+        public static int[] SortColors(int[] nums)
+        {
+            var left = 0;
+            var right = nums.Length - 1;
+            var i = 0;
+
+            while (i <= right)
+            {
+                if (nums[i] == 0)
+                {
+                    //using tuple to swap the values , much cleaner than legacy approach
+                    (nums[left], nums[i]) = (nums[i], nums[left]);
+                    left++;
+                    i++;
+                }
+                else if (nums[i] == 2)
+                {
+                    (nums[right], nums[i]) = (nums[i], nums[right]);
+                    right--;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            return nums;
+        }
     }
 }
