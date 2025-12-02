@@ -142,6 +142,33 @@ namespace Leetcode15Patterns
             return result;
         }
 
+        //LC#611 Valid Triangle Numbers 
+        public static int ValidTraingleNumbers(int[] nums)
+        {
+            int count = 0;
+
+            for (int j = nums.Length - 1; j >= 3; j--)
+            {
+                var left = 0;
+                var right = j - 1;
+
+                while (left < right)
+                {
+                    if (nums[left] + nums[right] > nums[j])
+                    {
+                        int validTriplet = right - left;
+                        count += validTriplet;
+                        right--;
+                    }
+                    else
+                    {
+                        left++;
+                    }
+                }
+            }
+            return count;
+        }
+
         //Color Sorting using Dutch National Flag algorithm
         public static int[] SortColors(int[] nums)
         {
