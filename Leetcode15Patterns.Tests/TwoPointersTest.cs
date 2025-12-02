@@ -34,5 +34,14 @@
             TwoPointers.MoveZeroes(nums);
             Assert.Equal([1, 3, 12, 0, 0], nums);
         }
+
+        [Theory]
+        [InlineData(new int[] { 2, 1, 2, 0, 1, 0, 1, 0, 1 }, new int[] { 0, 0, 0, 1, 1, 1, 1, 2, 2 })]
+        [InlineData(new int[] { 2, 0, 2, 1, 1, 0 }, new int[] { 0, 0, 1, 1, 2, 2 })]
+        public void TestSortColors(int[] colors, int[] sortedColors)
+        {
+            int[] sortedResult = TwoPointers.SortColors(colors);
+            Assert.Equal(sortedColors, sortedResult);
+        }
     }
 }
