@@ -43,5 +43,13 @@
             var resultCount = TwoPointers.ValidTraingleNumbers(nums);
             Assert.Equal(tripletCount, resultCount);
         }
+
+        [Theory]
+        [InlineData(new int[] { 3, 4, 1, 2, 2, 5, 1, 0, 2 }, 10)]
+        public void TestTrappingRainWater(int[] heights, int trappedWaterCount)
+        {
+            var resultCount = TwoPointers.TrappingRainWater(heights);
+            Assert.Equal(trappedWaterCount, resultCount);
+        }
     }
 }
