@@ -2,6 +2,12 @@
 {
     public class TwoPointersTest
     {
+        private static readonly List<IList<int>> ThreeSumTestCase1 = new List<IList<int>>
+        {
+            new List<int> { 1, 2, 3 },
+            new List<int> { 1, 1, 1 }
+        };
+
         [Theory]
         [InlineData(new int[] { 10, 15, 3, 7 }, 17, true)]
         [InlineData(new int[] { 1, 2, 3, 4 }, 8, false)]
@@ -76,6 +82,15 @@
         {
             var resultCount = TwoPointers.TrappingRainWater(heights);
             Assert.Equal(trappedWaterCount, resultCount);
+        }
+
+        [Fact]
+        public void Test3Sum()
+        {
+            int[] nums = [-1, 0, 1, 2, -1, -1];
+            var expectedTriplets = new List<IList<int>> { new List<int> { 1, 2, 3 }, new List<int> { 1, 1, 1 } };
+            var result = TwoPointers.ThreeSum(nums);
+            Assert.Equal(expectedTriplets, result);
         }
     }
 }
