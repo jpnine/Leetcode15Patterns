@@ -14,6 +14,7 @@
 
         [Theory]
         [InlineData(new int[] { 1, 2, 3, -1, 2 }, 3, 2)]
+        [InlineData(new int[] { 1, -1, 0 }, 0, 3)]
         public void TestSubArrayEqualsK(int[] nums, int k, int expectedCount)
         {
             int actualCount = PrefixSum.SubarraySumEqualsK(nums, k);
