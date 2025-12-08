@@ -26,27 +26,22 @@
         public static int SubarraySumEqualsK(int[] nums, int k)
         {
             int count = 0;
-            int n = nums.Length;
-            Dictionary<int, int> prefixSumCounts = new()
+            Dictionary<int, int> prefixMap = new()
             {
-                [0] = 1 // Base case: one way to have a prefix sum of 0
+                [0] = 1// Base case: one way to have a prefix sum of 0
             };
             int currentPrefixSum = 0;
-            for (int i = 0; i < n; i++)
+
+            foreach (var n in nums)
             {
-                currentPrefixSum += nums[i];
-                if (prefixSumCounts.ContainsKey(currentPrefixSum - k))
+                currentPrefixSum += n;
+                if (prefixMap.ContainsKey(currentPrefixSum - k))
                 {
-                    count += prefixSumCounts[currentPrefixSum - k];
+                    count += prefixMap[currentPrefixSum - k];
                 }
-                if (prefixSumCounts.TryGetValue(currentPrefixSum, out int value))
-                {
-                    prefixSumCounts[currentPrefixSum] = ++value;
-                }
-                else
-                {
-                    prefixSumCounts[currentPrefixSum] = 1;
-                }
+
+                prefixMap[currentPrefixSum] = prefixMap.ContainsKey(currentPrefixSum) ? prefixMap[currentPrefixSum]++ : 1;
+
             }
             return count;
         }
