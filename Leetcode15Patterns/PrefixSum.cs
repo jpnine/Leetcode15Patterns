@@ -35,9 +35,9 @@
             foreach (var n in nums)
             {
                 currentPrefixSum += n;
-                if (prefixMap.ContainsKey(currentPrefixSum - k))
+                if (prefixMap.TryGetValue(currentPrefixSum - k, out int foundValue ))
                 {
-                    count += prefixMap[currentPrefixSum - k];
+                    count += foundValue;
                 }
 
                 prefixMap[currentPrefixSum] = prefixMap.ContainsKey(currentPrefixSum) ? prefixMap[currentPrefixSum]++ : 1;
