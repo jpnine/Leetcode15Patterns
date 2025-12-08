@@ -40,7 +40,8 @@
                     count += foundValue;
                 }
 
-                prefixMap[currentPrefixSum] = prefixMap.ContainsKey(currentPrefixSum) ? prefixMap[currentPrefixSum]++ : 1;
+                prefixMap.TryAdd(currentPrefixSum, 0); //Add new key if it does not exist
+                prefixMap[currentPrefixSum]++;// now at this we are sure that the key is added if it was not there , increament works for both cases even if key existed before.
 
             }
             return count;
