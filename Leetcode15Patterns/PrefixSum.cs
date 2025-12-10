@@ -48,7 +48,7 @@
         }
 
         // Count Vowels in String with given queries in formart of substring array
-        public static int[] countVowels(string word, int[][] queries)
+        public static int[] CountVowels(string word, int[][] queries)
         {
             var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
             var prefixCount = new int[word.Length + 1];
@@ -67,6 +67,31 @@
                 int right = queries[i][1];
                 int numVowels = prefixCount[right + 1] - prefixCount[left];
                 result[i] = numVowels;
+            }
+
+            return result;
+        }
+
+        // LC-2559 Count Vowel Strings in Ranges
+        public static int[] VowelStrings(string[] words, int[][] queries)
+        {
+            char[] vowels = ['a', 'e', 'i', 'o', 'u'];
+            int[] prefixSum = [words.Length + 1];
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                bool isVowel = vowels.Contains(words[i][0]) && vowels.Contains(words[i][^1]);
+                prefixSum[i + 1] = prefixSum[i] + (isVowel ? 1 : 0);
+            }
+
+            int[] result = [queries.Length + 1];
+
+            for (int i = 0; i < queries.Length; i++)
+            {
+                int left = queries[i][0];
+                int right = queries[i][1];
+                int vowelCounts = prefixSum[right + 1] - prefixSum[left];
+                result[i] = vowelCounts;
             }
 
             return result;
