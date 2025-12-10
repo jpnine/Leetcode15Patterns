@@ -20,5 +20,26 @@
             int actualCount = PrefixSum.SubarraySumEqualsK(nums, k);
             Assert.Equal(expectedCount, actualCount);
         }
+
+        [Theory]
+        [MemberData(nameof(GetCountVowelTestData))]
+        public void TestCountVowels(string word, int[][] queries, int[] expectedResult)
+        {
+            var actualOutput = PrefixSum.countVowels(word, queries);
+            Assert.Equal(expectedResult, actualOutput);
+        }
+
+        public static IEnumerable<object[]> GetCountVowelTestData()
+        {
+            yield return new object[]
+            {
+            "prefixsum",
+            new int[][]
+            {
+                [1, 2]
+            },
+            new int[] { 1, 2, 1 }
+            };
+        }
     }
 }
