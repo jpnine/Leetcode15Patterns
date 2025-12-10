@@ -25,7 +25,7 @@
         [MemberData(nameof(GetCountVowelTestData))]
         public void TestCountVowels(string word, int[][] queries, int[] expectedResult)
         {
-            var actualOutput = PrefixSum.countVowels(word, queries);
+            var actualOutput = PrefixSum.CountVowels(word, queries);
             Assert.Equal(expectedResult, actualOutput);
         }
 
@@ -34,6 +34,22 @@
             yield return new object[]
             {
             "prefixsum", new int[][]{[0, 2], [1, 4], [3, 5]},new int[] { 1, 2, 1 }
+            };
+        }
+
+        [Theory]
+        [MemberData(nameof(GetVowelStringsTestData))]
+        public void TestVowelStrings(string[] words, int[][] queries, int[] expectedResult)
+        {
+            var actualOutput = PrefixSum.VowelStrings(words, queries);
+            Assert.Equal(expectedResult, actualOutput);
+        }
+
+        public static IEnumerable<object[]> GetVowelStringsTestData()
+        {
+            yield return new object[]
+            {
+            new string[] {"aba","bcb","ece","aa","e"}, new int[][]{[0,2],[1,4],[1,1]},new int[] { 2, 3, 0 }
             };
         }
     }
