@@ -51,18 +51,17 @@
         public static int[] countVowels(string word, int[][] queries)
         {
             var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
-            int len = word.Length;
-            var prefixCount = new int[] { 0 };
+            var prefixCount = new int[word.Length + 1];
 
-            for (int i = 1; i < len; i++)
+            for (int i = 0; i < word.Length; i++)
             {
-                bool isVowel = vowels.Contains(word[i - 1]);
-                prefixCount[i] = prefixCount[i - 1] + (isVowel ? 1 : 0);
+                bool isVowel = vowels.Contains(word[i]);
+                prefixCount[i + 1] = prefixCount[i] + (isVowel ? 1 : 0); // prefixCount[i] will be zeo by default
             }
 
-            var result = Array.Empty<int>();
+            var result = new int[queries.Length];
 
-            for (int i = 0; i < len; i++)
+            for (int i = 0; i < queries.Length; i++)
             {
                 int left = queries[i][0];
                 int right = queries[i][1];
