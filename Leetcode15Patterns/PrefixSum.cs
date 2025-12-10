@@ -46,5 +46,31 @@
             }
             return count;
         }
+
+        // Count Vowels in String with given queries in formart of substring array
+        public static int[] countVowels(string word, int[][] queries)
+        {
+            var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+            int len = word.Length;
+            var prefixCount = new int[] { 0 };
+
+            for (int i = 1; i < len; i++)
+            {
+                bool isVowel = vowels.Contains(word[i - 1]);
+                prefixCount[i] = prefixCount[i - 1] + (isVowel ? 1 : 0);
+            }
+
+            var result = Array.Empty<int>();
+
+            for (int i = 0; i < len; i++)
+            {
+                int left = queries[i][0];
+                int right = queries[i][1];
+                int numVowels = prefixCount[right + 1] - prefixCount[left];
+                result[i] = numVowels;
+            }
+
+            return result;
+        }
     }
 }
