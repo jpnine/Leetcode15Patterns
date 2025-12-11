@@ -6,24 +6,27 @@
         {
             int start = 0;
             Dictionary<int, int> Basket = [];
-            int mxFruit = 0;
+            int maxFruitCount = 0;
 
             for (int end = 0; end < fruits.Length; end++)
             {
-                if (Basket.TryGetValue(end, out int value))
+                Basket.TryAdd(fruits[end], 0);
+                Basket[fruits[end]]++;
+
+                while (Basket.Count > 2)
                 {
-                    Basket[end] = value + 1;
+                    var startFruit = Basket[fruits[start]];
+                    startFruit--;
+                    if (startFruit == 0)
+                    {
+                        Basket.Remove(startFruit);
+                    }
+                    start++;
                 }
-                else
-                {
-                    Basket[end] = 1;
-                }
+                maxFruitCount = Math.Max(maxFruitCount, end - start + 1);
             }
 
-            while(Basket.Count > 2)
-            {
-                var startFruit = Basket[start];
-            }
+            return maxFruitCount;
         }
     }
 }
